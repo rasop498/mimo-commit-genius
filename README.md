@@ -1,3 +1,5 @@
+![MiMo Commit Genius](docs/banner.png)
+
 # MiMo Commit Genius
 
 **AI-powered Conventional Commit messages, changelogs, and semantic version bumps — powered by Xiaomi MiMo V2.5.**
@@ -8,6 +10,8 @@ Stop bikepainting commit messages. `mimo-commit` reads your staged diff, asks th
 ![License](https://img.shields.io/badge/license-MIT-green)
 ![MiMo](https://img.shields.io/badge/powered%20by-MiMo%20V2.5-orange)
 ![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow)
+
+![CLI demo](docs/demo-suggest.png)
 
 ---
 
@@ -36,7 +40,7 @@ MiMo V2.5 is **600–2000x cheaper** than frontier models while being explicitly
 - Strict Conventional Commits v1.0.0 parser/formatter (no `Any`, no regex soup leaking into business logic)
 - Honors per-repo overrides via `.env` (model, temperature, bump types, breaking-change keywords)
 - Zero hard dependencies beyond `requests` + `python-dotenv`
-- 50+ tests including an isolated git fixture that exercises the CLI end-to-end without ever calling the real API
+- **89 tests** including an isolated git fixture that exercises the CLI end-to-end without ever calling the real API
 
 ---
 
@@ -100,6 +104,8 @@ mimo-commit stats --ping
 
 ### 1. Suggest a commit message manually
 
+![suggest demo](docs/demo-suggest.png)
+
 ```bash
 $ git add src/auth.py
 $ mimo-commit suggest
@@ -139,6 +145,8 @@ mimo-commit install-hook --uninstall
 
 ### 3. Generate a changelog
 
+![changelog demo](docs/demo-changelog.png)
+
 ```bash
 $ mimo-commit changelog 1.2.0 --from v1.1.0 -o CHANGELOG.md
 # wrote 27 commits to CHANGELOG.md
@@ -152,6 +160,8 @@ mimo-commit changelog 1.2.0 --no-llm
 ```
 
 ### 4. Suggest the next semver version
+
+![release demo](docs/demo-release.png)
 
 ```bash
 $ mimo-commit release
@@ -226,7 +236,7 @@ git clone https://github.com/rasop498/mimo-commit-genius.git
 cd mimo-commit-genius
 pip install -e ".[dev]"
 
-pytest -v                  # 50+ tests, none hit the real API
+pytest -v                  # 89 tests, none hit the real API
 ruff check mimo_commit tests
 ```
 

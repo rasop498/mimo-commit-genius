@@ -33,3 +33,6 @@ htmlcov/
 *.swp
 .DS_Store
 *.log
+
+# local venv
+.venv/
