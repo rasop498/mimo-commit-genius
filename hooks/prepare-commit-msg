@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+# MIMO_COMMIT_GENIUS_HOOK_V1
+# Reference copy of the prepare-commit-msg hook installed by `mimo-commit install-hook`.
+# This file lives in the repo for documentation purposes; the runtime hook is
+# generated in .git/hooks/prepare-commit-msg.
+
+COMMIT_MSG_FILE="$1"
+COMMIT_SOURCE="$2"
+
+if [ -n "$COMMIT_SOURCE" ] && [ "$COMMIT_SOURCE" != "template" ]; then
+    exit 0
+fi
+
+if ! command -v mimo-commit >/dev/null 2>&1; then
+    echo "mimo-commit not found on PATH — install with: pip install mimo-commit-genius" >&2
+    exit 0
+fi
+
+mimo-commit suggest --write "$COMMIT_MSG_FILE" --quiet || true
